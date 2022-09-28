@@ -32,6 +32,8 @@ function hot_data.init(player)
 	I didnt know how to do them when i first started lol
 	--]]
 
+	-- data_array[player.UserId]['islands'] = nil
+	
 	if not data_array[player.UserId] then data_array[player.UserId] = {} end
 	if not data_array[player.UserId]['gems'] then data_array[player.UserId]['gems'] = {} end
 	if not data_array[player.UserId]['coins'] then data_array[player.UserId]['coins'] = 0 end

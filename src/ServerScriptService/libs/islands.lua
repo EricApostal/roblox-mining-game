@@ -31,6 +31,7 @@ function islands.buy_island(plr, island_name)
 		session.set_island(plr, island_name)
 		print('Bought island ' .. island_name .. ' for ' .. tostring(gemconfig.get_island_advance_price(island_name)) .. ' coins!')
 		print(session.get_owned_islands(plr))
+		islands.teleport_player_to(plr, session.get_island(plr))
 	else
 		print(plr.Name .. ' tried to buy ' .. island_name .. ', but they didn\'t have enough money!')
 	end
