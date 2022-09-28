@@ -31,18 +31,17 @@ function hot_data.init(player)
 	THIS SHOULD BE HANDLED BY METATABLES
 	I didnt know how to do them when i first started lol
 	--]]
-	
 
-	
 	if not data_array[player.UserId] then data_array[player.UserId] = {} end
 	if not data_array[player.UserId]['gems'] then data_array[player.UserId]['gems'] = {} end
 	if not data_array[player.UserId]['coins'] then data_array[player.UserId]['coins'] = 0 end
-	if not data_array[player.UserId]['islands'] then data_array[player.UserId]['islands'] = {} end data_array[player.UserId]['islands'][1] = 'coal' -- i dont like how this is hardcoded
-	
-	-- data_array[player.UserId]['island'] = 'iron' -- DELETE, MANUAL TESTING ONLY!
-	
+	if not data_array[player.UserId]['islands'] then data_array[player.UserId]['islands'] = {} data_array[player.UserId]['islands'][1] = 'coal' print('setting island[1] to coal') end -- i dont like how this is hardcoded
+
+
 	leaderboard.set(player, data_array[player.UserId]['coins'])
 	island_service.teleport_player_to(player, hot_data.get_island(player))
+
+	hot_data.set_gold(player, 999999999)
 end
 
 function hot_data.get_all_data(player)

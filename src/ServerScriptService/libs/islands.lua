@@ -30,6 +30,7 @@ function islands.buy_island(plr, island_name)
 	if session.remove_gold(plr, gemconfig.get_island_advance_price(island_name)) then
 		session.set_island(plr, island_name)
 		print('Bought island ' .. island_name .. ' for ' .. tostring(gemconfig.get_island_advance_price(island_name)) .. ' coins!')
+		print(session.get_owned_islands(plr))
 	else
 		print(plr.Name .. ' tried to buy ' .. island_name .. ', but they didn\'t have enough money!')
 	end

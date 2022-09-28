@@ -16,18 +16,13 @@ end
 
 function datastore.retrieve_data(player, value)
 	local success, errormessage = pcall(function()
-		clicks = database:GetAsync(player.UserId)
+		_r = database:GetAsync(player.UserId)
 	end)
 	if not success then
 		print(errormessage)
 		return false
 	end
-	return clicks
-end
-
-function datastore.test()
-	print("test called from datastore!")
-	return "return works too!"
+	return _r
 end
 
 

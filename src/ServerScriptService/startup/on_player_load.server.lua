@@ -13,8 +13,7 @@ local function on_player_loaded(player)
 	ReplicatedStorage:WaitForChild('get_gem_information'):FireClient(player, gem_info)
 
 	session.init(player)
-	
-	wait(3)
+
 	print(player.name .. ' has loaded into the game with data:')
 	print(session.get_all_data(player))
 	
