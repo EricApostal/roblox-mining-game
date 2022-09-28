@@ -10,8 +10,6 @@ local ps = game:GetService("ProximityPromptService")
 local prompts = gemconfig.get_all_advance_prompts()
 
 function on_prompt(plr, island_name)
-	-- I need some sort of way to index a name from path_to_prompt
-	-- print(gemconfig.get_island_advance_price(island_name))
 	islands.buy_island(plr, islands.get_advance_destination(island_name))
 end
 
