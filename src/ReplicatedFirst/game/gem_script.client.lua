@@ -29,15 +29,10 @@ function force_update_event(saved_gems)
 end
 
 function on_gem_mined(gem)
-	--[[
-	Issue: Since this is async, I think the cooldown will get overwritten sometimes,
-	as the action can occur on the same tick
-	
-	Fix: Maybe add some sort of delay each time?
-	--]]
 	if not(cooldown.is_finished()) then return end
+
 	local amount = gem_table[gem]+1
-	cooldown.set_cooldown(1)
+	cooldown.set_cooldown(0.2)
 	inv.add_item(gem, amount)
 	gem_table[gem] = amount
 	ReplicatedStorage:WaitForChild("send_gem_packet"):FireServer(gem, gem_table[gem])

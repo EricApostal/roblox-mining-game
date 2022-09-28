@@ -71,7 +71,7 @@ end
 function gemconfig.get_island_advance_price(island_name)
 	repeat wait() until gems_registered
 	
-	if gems[island_name] then return gems[island_name]['advance_requirement'] end
+	if gems[island_name] then return gems[island_name]['price'] end
 end
 
 function gemconfig.get_all_advance_prompts()
@@ -91,6 +91,10 @@ function gemconfig.get_island_name_by_prompt_path(path)
 			return k
 		end
 	end
+end
+
+function gemconfig.get_island_advance_destination(island)
+	return gems[island]['advance_to_island']
 end
 
 return gemconfig

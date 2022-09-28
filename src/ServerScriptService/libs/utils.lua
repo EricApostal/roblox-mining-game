@@ -1,5 +1,15 @@
 local utils = {}
 
+function utils.has_value(tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
+end
+
 function utils.teleport_player_to_part(player, p)
 	utils.teleport_player_to_pos(player, p.Position.x,p.Position.y,p.Position.z)
 end

@@ -6,12 +6,18 @@ utils = require(game.ServerScriptService.libs.utils)
 
 
 local function on_player_loaded(player)
-	print(player.name .. ' has loaded into the game!')
+	
 	
 	-- Send all the gem data to the client
 	local gem_info = gem_config.get_all_data()
 	ReplicatedStorage:WaitForChild('get_gem_information'):FireClient(player, gem_info)
+
 	session.init(player)
+	
+	wait(3)
+	print(player.name .. ' has loaded into the game with data:')
+	print(session.get_all_data(player))
+	
 end
 
 on_player_load.OnServerEvent:Connect(on_player_loaded)

@@ -31,15 +31,22 @@ function hot_data.init(player)
 	THIS SHOULD BE HANDLED BY METATABLES
 	I didnt know how to do them when i first started lol
 	--]]
+	
+
+	
 	if not data_array[player.UserId] then data_array[player.UserId] = {} end
 	if not data_array[player.UserId]['gems'] then data_array[player.UserId]['gems'] = {} end
 	if not data_array[player.UserId]['coins'] then data_array[player.UserId]['coins'] = 0 end
-	if not data_array[player.UserId]['island'] then data_array[player.UserId]['island'] = 'coal' end -- i dont like how this is hardcoded
+	if not data_array[player.UserId]['islands'] then data_array[player.UserId]['islands'] = {} end data_array[player.UserId]['islands'][1] = 'coal' -- i dont like how this is hardcoded
 	
 	-- data_array[player.UserId]['island'] = 'iron' -- DELETE, MANUAL TESTING ONLY!
 	
 	leaderboard.set(player, data_array[player.UserId]['coins'])
 	island_service.teleport_player_to(player, hot_data.get_island(player))
+end
+
+function hot_data.get_all_data(player)
+	return data_array[player.UserId]
 end
 
 function hot_data.set_gold(player, amount)
@@ -95,11 +102,15 @@ function hot_data.get_gems(player)
 end
 
 function hot_data.get_island(player)
-	return data_array[player.UserId]['island']
+	return data_array[player.UserId]['islands'][1]
 end
 
 function hot_data.set_island(player, island) -- island should be a string, will index the array for rest of values
-	data_array[player.UserId]['island'] = island
+	table.insert(data_array[player.UserId]['islands'], 1, island)
 end
+
+function hot_data.get_owned_islands(player)
+	return data_array[player.UserId]['islands']
+end	
 
 return hot_data
