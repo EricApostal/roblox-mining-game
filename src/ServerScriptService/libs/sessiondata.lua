@@ -33,7 +33,8 @@ function hot_data.init(player)
 	--]]
 
 	-- data_array[player.UserId]['islands'] = nil
-	
+	-- data_array[player.UserId]['coins'] = nil
+
 	if not data_array[player.UserId] then data_array[player.UserId] = {} end
 	if not data_array[player.UserId]['gems'] then data_array[player.UserId]['gems'] = {} end
 	if not data_array[player.UserId]['coins'] then data_array[player.UserId]['coins'] = 0 end
@@ -43,7 +44,6 @@ function hot_data.init(player)
 	leaderboard.set(player, data_array[player.UserId]['coins'])
 	island_service.teleport_player_to(player, hot_data.get_island(player))
 
-	hot_data.set_gold(player, 999999999)
 end
 
 function hot_data.get_all_data(player)
