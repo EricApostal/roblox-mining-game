@@ -1,5 +1,5 @@
 ReplicatedStorage = game:GetService("ReplicatedStorage")
-gem_config = require(game.ServerScriptService.config.gemconfig)
+gemconfig = require(game.ServerScriptService.libs.replicatedinfo)
 
 local coal = {}
 coal['name'] = 'coal'
@@ -45,4 +45,4 @@ diamond['price'] = 2000
 -- diamond['advance_requirement'] = 20000
 
 
-gem_config.register_gems({coal, iron, gold, diamond})
+gemconfig.register_gems({coal, iron, gold, diamond})

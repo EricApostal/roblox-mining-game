@@ -3,7 +3,7 @@ local islands = {}
 local libs = game.ServerScriptService.libs
 local datastore = require(libs.datastore)
 local utils = require(libs.utils)
-local gemconfig = require(game.ServerScriptService.config.gemconfig)
+local gemconfig = require(game.ServerScriptService.libs.replicatedinfo)
 
 
 function islands.teleport_player_to(plr, island) -- I need to specify the island, rn it checks for the player's island

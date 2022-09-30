@@ -9,7 +9,7 @@ local gem_packet_event = ReplicatedStorage:WaitForChild("send_gem_packet")
 
 local data_service = require(script.Parent.Parent.libs.datastore)
 local leaderboard = require(game.ServerScriptService.libs.leaderboard)
-local gemconfig = require(game.ServerScriptService.config.gemconfig)
+local gemconfig = require(game.ServerScriptService.libs.replicatedinfo)
 local island_service = require(game.ServerScriptService.libs.islands)
 local utils = require(game.ServerScriptService.libs.utils)
 

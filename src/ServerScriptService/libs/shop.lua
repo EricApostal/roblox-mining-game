@@ -1,14 +1,14 @@
 local shop = {}
 ---
 local sessiondata_service = require(game.ServerScriptService.libs.sessiondata)
-local gem_config = require(game.ServerScriptService.config.gemconfig)
+local gemconfig = require(game.ServerScriptService.libs.replicatedinfo)
 local leaderboard = require(game.ServerScriptService.libs.leaderboard)
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 
 function shop.get_value(plr)
 	local inventory = sessiondata_service.get_gems(plr)
-	local shop_values = gem_config.get_shop_values()
+	local shop_values = gemconfig.get_shop_values()
 	local _r = 0
 	for k,v in inventory do
 		if v then

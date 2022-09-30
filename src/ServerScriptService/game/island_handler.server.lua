@@ -1,6 +1,6 @@
 local libs = game.ServerScriptService.libs
 local config = game.ServerScriptService.config
-local gemconfig = require(config.gemconfig)
+local gemconfig = require(libs.replicatedinfo)
 local islands = require(libs.islands)
 local session = require(libs.sessiondata)
 
