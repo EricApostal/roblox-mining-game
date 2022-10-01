@@ -14,6 +14,8 @@ paths = gem_info.get_gem_paths()
 gem_table = gem_info.assume_all_values_equal(0)
 
 function force_update_event(saved_gems)
+	print('saved_gems: ')
+	print(saved_gems)
 	if not saved_gems then
 		saved_gems = gem_table
 	end

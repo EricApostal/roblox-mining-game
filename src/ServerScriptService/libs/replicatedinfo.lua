@@ -11,14 +11,17 @@ info = {}
 info['gems'] = {}
 info['pets'] = {}
 
+function replicatedassets.get_valid_gems()
+	-- Should return all valid gems
+	while not info do wait(.1) end
+	local _t = {}
+	for k,v in info['gems'] do
+		table.insert(_t, #_t, k)
+	end
+	return _t
+end
+
 function replicatedassets.register_gems(gem_info) -- array of arrays
-	--[[
-	name: Name of the desired ore stash
-	icon_path: Path of the desired graphic, shows up in sidebar inventory
-	workspace_path: path of the physical stash in workspace
-	spawn_location: The position the player spawns in when at this island
-	gold_conversion_value: how much gold each item is worth
-	--]]
 	for k,v in gem_info do
 		info['gems'][v['name']] = v
 	end

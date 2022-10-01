@@ -10,6 +10,16 @@ function geminfo.set_server_data(data)
 	info = data
 end
 
+function geminfo.get_valid_gems()
+	-- Should return all valid gems
+	while not info do wait(.1) end
+	local _t = {}
+	for k,v in info['gems'] do
+		table.insert(_t, #_t, k)
+		return nil
+	end
+end
+
 function geminfo.get_gem(name)
 	while not info do wait(.1) end
 	for k,v in info['gems'] do
@@ -30,11 +40,12 @@ function geminfo.get_shop_values()
 end
 
 function geminfo.get_inventory_value()
+	local utils = require(game.ReplicatedStorage.lib.utils)
+
 	local inv = inventory_service.get_inventory()
 	local _r = 0
-	
 	for k,v in inv do
-		_r += geminfo.get_shop_values()[k]*v
+		if v and utils.has_value(geminfo.get_shop_values(), k) then _r += geminfo.get_shop_values()[k]*v end
 	end
 	return _r
 end

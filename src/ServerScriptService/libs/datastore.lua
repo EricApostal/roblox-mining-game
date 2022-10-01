@@ -1,5 +1,5 @@
 local DataStoreService = game:GetService("DataStoreService")
-local database = DataStoreService:GetDataStore("reeeeet54423q")
+local database = DataStoreService:GetDataStore("bruh1234567")
 
 local datastore = {}
 
