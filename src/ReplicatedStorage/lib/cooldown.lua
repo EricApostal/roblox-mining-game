@@ -14,7 +14,7 @@ end
 
 function cooldown.is_finished()
 	if finish_timestamp == 0 then return true end -- if no cooldown has been set, there is no cooldown to finish
-	if tick() >= finish_timestamp then return true end  -- if the current time is greater than finish time
+	if tick() >= finish_timestamp-.12 then return true end  -- if the current time is greater than finish time
 	if tick() < finish_timestamp then return false end -- if the current time hasn't quite reached the finish time
 end
 
