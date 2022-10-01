@@ -17,7 +17,7 @@ data_array = {}
 ---
 
 function hot_data.remove_gems(player)
-	for k,v in gemconfig.get_all_data() do
+	for k,v in gemconfig.get_all_data()['gems'] do
 		data_array[player.UserId]['gems'][k] = 0
 	end
 	gem_packet_event:FireClient(player, data_array[player.UserId]['gems'])
@@ -79,6 +79,15 @@ end
 	
 	
 function hot_data.sync_player_gems(player)
+	--[[
+	PROBLEM:
+	IT WILL SYNC THE GEMS IN A 2D ARRAY
+	Actually no. For some reason datastore is saving "pets" and "gems" within "gems"?
+
+	This may have been fixed when I changed databases. Maybe some artifacts from migration?
+
+	IT HAPPENS WHEN I SELL MY ORES
+	--]]
 	local data = data_service.retrieve_data(player)
 	data_array[player.UserId] = data
 	if data then data = data['gems'] end -- because we only want to sync the gems

@@ -4,16 +4,17 @@ local sessiondata_service = require(game.ServerScriptService.libs.sessiondata)
 local gemconfig = require(game.ServerScriptService.libs.replicatedinfo)
 local leaderboard = require(game.ServerScriptService.libs.leaderboard)
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
+local utils = require(game.ServerScriptService.libs.utils)
 
 function shop.get_value(plr)
 	local inventory = sessiondata_service.get_gems(plr)
 	local shop_values = gemconfig.get_shop_values()
+
 	local _r = 0
 	for k,v in inventory do
-		if v then
-			_r += shop_values[k] * v
-		end
+		-- if v and (utils.has_value(gemconfig.get_valid_gems(), k )) then
+		_r += shop_values[k] * v
+		--end
 	end
 	return _r
 end
