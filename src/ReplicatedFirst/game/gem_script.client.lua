@@ -14,8 +14,6 @@ paths = gem_info.get_gem_paths()
 gem_table = gem_info.assume_all_values_equal(0)
 
 function force_update_event(saved_gems)
-	print('saved_gems: ')
-	print(saved_gems)
 	if not saved_gems then
 		saved_gems = gem_table
 	end
@@ -34,7 +32,7 @@ function on_gem_mined(gem)
 	if not(cooldown.is_finished()) then return end
 
 	local amount = gem_table[gem]+1
-	cooldown.set_cooldown(0.2)
+	cooldown.set_cooldown(0.5)
 	inv.add_item(gem, amount)
 	gem_table[gem] = amount
 	ReplicatedStorage:WaitForChild("send_gem_packet"):FireServer(gem, gem_table[gem])

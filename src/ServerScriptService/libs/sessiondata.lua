@@ -72,7 +72,7 @@ function hot_data.get_gold(player)
 end
 
 function hot_data.save_player_gems(player)
-	print('saving data: ')
+	print(player.Name .. ' left with data: ')
 	print(data_array[player.UserId])
 	data_service.save_data(player, data_array[player.UserId])
 end

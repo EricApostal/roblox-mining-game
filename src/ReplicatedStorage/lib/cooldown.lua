@@ -8,7 +8,7 @@ finish_timestamp = 0
 
 function cooldown.set_progress_bar(sec)
 	progress_bar:TweenSize(UDim2.new(0.7, 0, 0.07, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine,  .1, true)
-	wait(.2)
+	wait(.1)
 	progress_bar:TweenSize(UDim2.new(0.7, 0, 0.96, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Sine,  sec-.2, true)
 end
 
