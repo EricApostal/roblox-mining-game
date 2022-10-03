@@ -10,14 +10,40 @@ function geminfo.set_server_data(data)
 	info = data
 end
 
+function geminfo.get_money()
+	local get_player_stats = ReplicatedStorage:WaitForChild("get_player_stats")
+	get_player_stats:FireServer()
+	
+	local player_stats_return = nil
+	
+	get_player_stats.OnClientEvent:Connect(function(player_stats)  player_stats_return = player_stats end)
+	
+	while player_stats_return == nil do wait(.1) end
+	return player_stats_return['coins']
+	
+end
+
 function geminfo.get_valid_gems()
 	-- Should return all valid gems
 	while not info do wait(.1) end
 	local _t = {}
 	for k,v in info['gems'] do
-		table.insert(_t, #_t, k)
+		table.insert(_t, #(_t), k)
 		return nil
 	end
+end
+
+function geminfo.get_island_price(island_name)
+	return info['gems']['island_name']['price']
+end
+
+function geminfo.get_island_advancement_price(island_name)
+	while not info do wait(.1) end
+	return info['gems'] [info['gems'][island_name]['advance_to_island']] ['price']
+end
+
+function geminfo.get_island_advancement(island_name)
+	return info['gems'][island_name]['advance_to_island']
 end
 
 function geminfo.get_gem(name)

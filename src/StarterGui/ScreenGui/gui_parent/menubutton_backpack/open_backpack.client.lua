@@ -1,10 +1,11 @@
 local backpack = script.Parent.Parent.Parent.backpack_main
+local anim = require (backpack.animation_handler )
 -- 
 function left_click()
 	if backpack.Visible then 
-		backpack.Visible = false 
+		anim:close_menu(backpack)
 	else
-		backpack.Visible = true 
+		anim:open_menu(backpack)
 	end
 	
 end
