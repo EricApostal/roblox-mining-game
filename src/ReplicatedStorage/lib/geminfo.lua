@@ -10,17 +10,23 @@ function geminfo.set_server_data(data)
 	info = data
 end
 
-function geminfo.get_money()
+function geminfo.get_all_stats()
 	local get_player_stats = ReplicatedStorage:WaitForChild("get_player_stats")
 	get_player_stats:FireServer()
-	
 	local player_stats_return = nil
 	
 	get_player_stats.OnClientEvent:Connect(function(player_stats)  player_stats_return = player_stats end)
 	
 	while player_stats_return == nil do wait(.1) end
-	return player_stats_return['coins']
-	
+	return player_stats_return
+end
+
+function geminfo.get_owned_islands()
+	return geminfo.get_all_stats()['islands']
+end
+
+function geminfo.get_money()
+	return geminfo.get_all_stats()['coins']
 end
 
 function geminfo.get_valid_gems()

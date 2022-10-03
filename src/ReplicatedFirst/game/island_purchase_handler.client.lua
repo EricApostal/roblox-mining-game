@@ -12,7 +12,9 @@ function display_purchase_ui(island_name)
 	payment_ui_properties['price'] = replicatedinfo.get_island_advancement_price(island_name)
 	payment_ui_properties['title'] = replicatedinfo.get_island_advancement(island_name) .. ' island purchase'
 	payment_ui_properties['prompt'] = "You are purchasing an advancement to the " .. replicatedinfo.get_island_advancement(island_name) .. " island!"
-	
+	payment_ui_properties['item_purchasing'] = replicatedinfo.get_island_advancement(island_name)
+	payment_ui_properties['owned_items'] = replicatedinfo.get_owned_islands() -- array of owned islands
+
 	if gui_lib:confim_payment(payment_ui_properties) then buy_island:FireServer(island_name) else print('User tried to buy island, lib returned false') end
 end
 

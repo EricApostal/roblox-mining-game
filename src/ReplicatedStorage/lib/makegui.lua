@@ -1,11 +1,11 @@
 local gui_lib = {}
 local ScreenGui = game.Players.LocalPlayer.PlayerGui:WaitForChild("ScreenGui")
 local replicatedinfo = require(game.ReplicatedStorage.lib.geminfo )
+
+local utils = require( game.ReplicatedStorage.lib.utils )
+
 gui_open = false -- so we dont accidentally open 2 uis at once
 
-function test ()
-	print('testing if modulescripts will load without being added to array')
-end
 
 function gui_lib:confim_payment(table_gui)
 	if gui_open then return false end
@@ -31,6 +31,13 @@ function gui_lib:confim_payment(table_gui)
 		confirm.Shadow.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
 	end
 	
+	if utils.has_value(table_gui['owned_items'], table_gui['item_purchasing']) then
+		confirm.TextLabel.Text = "Already Owned!"
+		confirm.Active = false
+		confirm.BackgroundColor3 = Color3.fromRGB(76, 76, 76)
+		confirm.Shadow.BackgroundColor3 = Color3.fromRGB(53, 53, 53)
+	end
+
 	cloned_gui.Parent = ScreenGui
 	anim:open_menu(gui)
 		
